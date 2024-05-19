@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Twitch Redirecionador OAuth </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Redirect</title>
 </head>
 <body>
-    <h1>Twitch OAuth Redirect</h1>
-    <p>Você pode fechar esta janela.</p>
-    <script>
-        const params = new URLSearchParams(window.location.hash.substring(1));
+    <script type="text/javascript">
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
         const token = params.get('access_token');
         if (token) {
             console.log('Token:', token);
+            document.body.innerHTML = `<p>Token: ${token}</p>`;
         } else {
-            console.error('Token não encontrado.');
+            document.body.innerHTML = '<p>No token found</p>';
         }
     </script>
 </body>
